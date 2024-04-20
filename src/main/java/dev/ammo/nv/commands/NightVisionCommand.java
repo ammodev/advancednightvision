@@ -149,6 +149,12 @@ public class NightVisionCommand implements CommandExecutor, TabCompleter {
 	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
 		List<String> completions = new ArrayList<>();
 
+		if (args.length == 1) {
+			for (Player player : sender.getServer().getOnlinePlayers()) {
+				completions.add(player.getName());
+			}
+		}
+
 		return Suggestions.suggestions(completions, args);
 	}
 }
