@@ -9,6 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class AdvancedNightVision extends JavaPlugin {
 
 	private static AdvancedNightVision instance;
+	private Metrics metrics;
 
 	/**
 	 * Gets instance.
@@ -25,11 +26,13 @@ public final class AdvancedNightVision extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
+		metrics.shutdown();
 	}
 
 	@Override
 	public void onEnable() {
 		instance = this;
+		metrics = new Metrics(this, 21667);
 
 		new NightVisionCommand(getCommand("nv"));
 	}
