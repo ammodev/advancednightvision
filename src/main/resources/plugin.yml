@@ -1,0 +1,22 @@
+name: AdvancedNightVision
+version: '${version}'
+main: dev.ammo.nv.AdvancedNightVision
+
+commands:
+  nv:
+    description: Toggle night vision
+    usage: /nv [player]
+    aliases: [ nightvision ]
+
+permissions:
+  nv.*:
+    description: Grants access to all night vision commands
+    children:
+      nv.use.self: true
+      nv.use.others: true
+  nv.use.self:
+    description: Allows the player to toggle night vision for themselves
+    default: false
+  nv.use.others:
+    description: Allows the player to toggle night vision for others
+    default: false
